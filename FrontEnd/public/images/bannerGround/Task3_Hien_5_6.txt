@@ -1,0 +1,22 @@
+Nguyen
+
+3.	Have an overview of all MCPs and information about their capacity
+
+4.	Assign vehicles to janitors and collectors
+
+View:
+	Render MCP UI and search bar
+	Render MCP details
+	Render vehicles available for each janitors and collectors
+	Send user event to  controller: click, form
+	
+Controller:
+	Call functions -> return JSON file detail about information MCP each 15 minutes
+	Check valid of input 
+	Processing request assign vehicle from view
+	Respond results about request of users
+	Get data from Database
+	Modify vehicles,janitors and collectors status in database
+Model :
+	Provide task and MCP info
+	Provide vehicles info

@@ -1,0 +1,9 @@
+2.3, Backofficier thiếu manage route(modify, create, delete)
+Janitor Assignment và Collector assignment cần có 2 hàm với 2 chức năng view all task 
+và view 1 task cụ thể dc chỉ định
+
+tổng quan usecase: thêm login logout
+
+2.1, manage calendar thiếu assign janitor/collector , assign vehicle, assign task
+Luồng hoạt động của hệ thống là tạo route trước -> gán thời gian (lịch) , người, xe, công việc.
+thiếu view MCP info trong chỗ Back officier

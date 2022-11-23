@@ -1,0 +1,30 @@
+{
+    "Community": {
+      "1": "Join the community"
+    },
+    "NavBar": {
+      "1": "Home",
+      "2": "Category",
+      "3": "About",
+      "4": "Contact"
+    },
+    "HeroBanner": {
+      "1": "One More Friend",
+      "2": "Thousands more fun!",
+      "3": "Loaders allow webpack to process other types of files and convert them into valid modules that can be consumed by your application and added to the dependency graph!"
+    },
+    "Button": {
+      "1": "View Intro",
+      "2": "Explore Now",
+      "3": "View More"
+    },
+    "Pets": {
+      "1": "Whats new?",
+      "2": "Take A Look At Some Of Our Pets",
+      "3": "Gene",
+      "4": "Male",
+      "5": "Female",
+      "6": "Age",
+      "7": "months"
+    }
+  }
