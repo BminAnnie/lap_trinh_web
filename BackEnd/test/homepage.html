@@ -61,14 +61,12 @@
           </div>
         </div>
       </nav>
-      <div class="main-wrapper">
-        <h2>User Information</h2>
-        <p class="id"></p>
-        <p class="username"></p>
-        <p class="password"></p>
-        <p class="fullname"></p>
-        <p class="role"></p>
+      <!-- Product -->
+      <div class="header">
+        <h1 class="title">Product</h1>
+        <button class="mycart">Giỏ hàng</button>
       </div>
+      <div class="content"></div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -83,11 +81,7 @@
         success: function (result) {
           var dataResult = JSON.parse(result);
           console.log(dataResult);
-          $(".id").html("ID: " + dataResult["id"]);
           $(".username").html("Username: " + dataResult["username"]);
-          $(".password").html("Pasword: " + dataResult["password"]);
-          $(".fullname").html("Fullname: " + dataResult["fullname"]);
-          $(".role").html("Role: " + dataResult["role"]);
           $(".login-btn").hide();
           $(".logout-btn").show();
         },

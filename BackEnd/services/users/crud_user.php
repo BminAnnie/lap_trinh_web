@@ -63,8 +63,6 @@ switch ($method) {
             $phone = $_POST['phone'];
             $address = $_POST['address'];
 
-            var_dump($id);
-
             $query = "UPDATE users SET  fullname='$fullname', password='$password', image='$image', phone='$phone', address='$address' WHERE id='$id'";
             $result = mysqli_query($conn, $query);
             if ($result) {

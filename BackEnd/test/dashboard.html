@@ -91,8 +91,123 @@
         </div>
       </div>
     </div>
+    <!-- ADD PRODUCT MODAL -->
+    <div class="modal fade" id="productAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form id="addNewProduct" method="POST">
+            <div class="modal-body">
+              <div id="errorMessage" class="alert alert-warning d-none"></div>
+
+              <div class="mb-3">
+                <label for="productname" class="form-label">Name</label>
+                <input type="text" class="form-control" id="newproductname" name="productname" />
+              </div>
+              <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <input type="text" class="form-control" id="newgender" name="gender" />
+              </div>
+              <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="newprice" name="price" />
+              </div>
+              <div class="mb-3">
+                <label for="birthday" class="form-label">Birthday</label>
+                <input type="text" class="form-control" id="newbirthday" name="birthday" />
+              </div>
+              <div class="mb-3">
+                <label for="microchip" class="form-label">Microchip</label>
+                <input type="text" class="form-control" id="newmicrochip" name="microchip" />
+              </div>
+              <div class="mb-3">
+                <label for="newinformationMore" class="form-label">More Info</label>
+                <input type="text" class="form-control" id="newinformationMore" name="newinformationMore" />
+              </div>
+              <div class="mb-3">
+                <label for="isSell" class="form-label">IsSell</label>
+                <input type="text" class="form-control" id="newisSell" name="isSell" />
+              </div>
+              <div class="mb-3">
+                <label for="isVaccinated" class="form-label">isVaccinated</label>
+                <input type="text" class="form-control" id="newisVaccinated" name="isVaccinated" />
+              </div>
+              <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="newquantity" name="quantity" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary addProduct-btn">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- EDIT PRODUCT MODAL -->
+    <div class="modal fade" id="productEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form id="editProduct" method="POST">
+            <div class="modal-body">
+              <div id="errorMessage" class="alert alert-warning d-none"></div>
+
+              <div class="mb-3">
+                <label for="productname" class="form-label">Name</label>
+                <input type="text" class="form-control" id="editproductname" name="productname" />
+              </div>
+              <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <input type="text" class="form-control" id="editgender" name="gender" />
+              </div>
+              <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="editprice" name="price" />
+              </div>
+              <div class="mb-3">
+                <label for="birthday" class="form-label">Birthday</label>
+                <input type="text" class="form-control" id="editbirthday" name="birthday" />
+              </div>
+              <div class="mb-3">
+                <label for="microchip" class="form-label">Microchip</label>
+                <input type="text" class="form-control" id="editmicrochip" name="microchip" />
+              </div>
+              <div class="mb-3">
+                <label for="editinformationMore" class="form-label">More Info</label>
+                <input type="text" class="form-control" id="editinformationMore" name="editinformationMore" />
+              </div>
+              <div class="mb-3">
+                <label for="isSell" class="form-label">IsSell</label>
+                <input type="text" class="form-control" id="editisSell" name="isSell" />
+              </div>
+              <div class="mb-3">
+                <label for="isVaccinated" class="form-label">isVaccinated</label>
+                <input type="text" class="form-control" id="editisVaccinated" name="isVaccinated" />
+              </div>
+              <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="editquantity" name="quantity" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary saveProduct-btn">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <!-- CONTAINER -->
     <div class="container">
+      <!-- USER -->
       <div class="header">
         <h1 class="title">GET ALL USERS</h1>
       </div>
@@ -110,6 +225,33 @@
             </tr>
           </thead>
           <tbody class="user-list"></tbody>
+        </table>
+      </div>
+      <!-- PRODUCT -->
+      <div class="header">
+        <h1 class="title">GET ALL PRODUCTS</h1>
+      </div>
+      <div class="content">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productAddModal">
+          Create New Product
+        </button>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Price</th>
+              <th>Birthday</th>
+              <th>IsSell</th>
+              <th>Microchip</th>
+              <th>InformationMore</th>
+              <th>isVaccinated</th>
+              <th>Quantity</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="product-list"></tbody>
         </table>
       </div>
     </div>
@@ -227,6 +369,166 @@
         var id = $(e.target).val();
         $.ajax({
           url: "../services/users/crud_user.php",
+          method: "POST",
+          data: {
+            action: "delete",
+            id: id,
+          },
+          success: function (result) {
+            var dataResult = JSON.parse(result);
+            if (dataResult["status"] == "200") {
+              location.reload();
+            }
+          },
+        });
+      });
+
+      // ======================================== //
+      // GET ALL PRODUCTS
+      $(document).ready(
+        $.ajax({
+          url: "../services/products/crud_product.php",
+          method: "GET",
+          data: {
+            action: "get_all",
+          },
+          success: function (result) {
+            var dataResult = JSON.parse(result);
+            console.log(dataResult);
+            var productList = $(".product-list");
+            var productItem = "";
+            for (let i = 0; i < dataResult.length; i++) {
+              productItem +=
+                "<tr>" +
+                "<td>" +
+                dataResult[i][0] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][1] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][2] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][3] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][4] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][5] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][6] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][7] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][8] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][9] +
+                "</td>" +
+                "<td>" +
+                "<button class='editProduct-btn' data-bs-toggle='modal' data-bs-target='#productEditModal' value=" +
+                dataResult[i][0] +
+                ">" +
+                "Edit" +
+                "</button>" +
+                "<button class='deleteProduct-btn' value=" +
+                dataResult[i][0] +
+                ">" +
+                "Xóa" +
+                "</button>" +
+                "</td>" +
+                "</tr>";
+            }
+            productList.append(productItem);
+          },
+        })
+      );
+      // HANDLE CREATE NEW PRODUCT
+      $(document).on("click", ".addProduct-btn", function (e) {
+        var name = $("#newproductname").val();
+        var gender = $("#newgender").val();
+        var price = $("#newprice").val();
+        var birthday = $("#newbirthday").val();
+        var isSell = $("#newisSell").val();
+        var microchip = $("#newmicrochip").val();
+        var informationMore = $("#newinformationMore").val();
+        var isVaccinated = $("#newisVaccinated").val();
+        var quantity = $("#newquantity").val();
+
+        $.ajax({
+          url: "../services/products/crud_product.php",
+          method: "POST",
+          data: {
+            action: "add",
+            name: name,
+            gender: gender,
+            price: price,
+            birthday: birthday,
+            isSell: isSell,
+            microchip: microchip,
+            informationMore: informationMore,
+            isVaccinated: isVaccinated,
+            quantity: quantity,
+          },
+          success: function (result) {
+            alert(result);
+            var dataResult = JSON.parse(result);
+            if (dataResult["status"] == "200") {
+              $("#productAddModal").modal("hide");
+            }
+          },
+        });
+      });
+      // HANDLE DELETE PRODUCT
+      var editProductId;
+      $(document).on("click", ".editProduct-btn", function (e) {
+        editProductId = $(e.target).val();
+      });
+      $(document).on("click", ".saveProduct-btn", function (e) {
+        var name = $("#editproductname").val();
+        var gender = $("#editgender").val();
+        var price = $("#editprice").val();
+        var birthday = $("#editbirthday").val();
+        var isSell = $("#editisSell").val();
+        var microchip = $("#editmicrochip").val();
+        var informationMore = $("#editinformationMore").val();
+        var isVaccinated = $("#editisVaccinated").val();
+        var quantity = $("#editquantity").val();
+
+        $.ajax({
+          url: "../services/products/crud_product.php",
+          method: "POST",
+          data: {
+            action: "edit",
+            id: editProductId,
+            name: name,
+            gender: gender,
+            price: price,
+            birthday: birthday,
+            isSell: isSell,
+            microchip: microchip,
+            informationMore: informationMore,
+            isVaccinated: isVaccinated,
+            quantity: quantity,
+          },
+          success: function (result) {
+            var dataResult = JSON.parse(result);
+            if (dataResult["status"] == "200") {
+              location.reload();
+            }
+          },
+        });
+      });
+      // HANDLE DELETE PRODUCT
+      $(document).on("click", ".deleteProduct-btn", function (e) {
+        var id = $(e.target).val();
+        $.ajax({
+          url: "../services/products/crud_product.php",
           method: "POST",
           data: {
             action: "delete",
