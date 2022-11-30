@@ -1,72 +1,76 @@
-<!-- $response is declared in file which call this file -->
-
-<!-- METHOD TO GET BLOGS BEFORE RENDER -->
-<!-- include("../config/db_connect.php");
-$result = mysqli_query($conn, "SELECT * FROM blogs");
-if($result) {
-    $out = array();
-    while ($row = mysqli_fetch_assoc($result)) {
-        $out[$row['fieldname']] = $row['content'];
-    }
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
-mysqli_close($conn); -->
-
 
 <?php
-session_start();
+include("../../config/db_connect.php");
 
-if (isset($_GET['action'])) {
-    // ADD BLOG
-    if ($_GET['action'] == 'add_blog') {
-        include("../config/db_connect.php");
-        $blogID = $_GET['postID'];
-        $author = $_POST['author'];
-        $title = $_POST['title'];
-        $image = $_POST['image'];
-        $content = $_POST['content'];
-
-        $query = "INSERT INTO blogs (id, author, title, image, content) VALUES ($blogID, $author, $title, $image, $content);";
-        $result = mysqli_query($conn, $query);
-        if ($result) {
-            $response = "Thêm thành công";
-        } else {
-            $response = "Lỗi: " . $conn->error;
+switch ($method) {
+    case 'GET':
+        if (isset($_GET['action'])) {
+            // GET ALL BLOGS
+            if ($_GET['action'] == 'get_all') {
+                $result = mysqli_query($conn, "SELECT * FROM blogs");
+            }
+            $result = mysqli_fetch_all($result);
+            mysqli_close($conn);
+            echo json_encode($result);
         }
-        mysqli_close($conn);
-    }
-    // UPDATE BLOG
-    if ($_GET['action'] == 'update_blog') {
-        include("../config/db_connect.php");
-        $blogID = $_GET['postID'];
-        $author = $_POST['author'];
-        $title = $_POST['title'];
-        $image = $_POST['image'];
-        $content = $_POST['content'];
+        break;
+    case 'POST':
+        if (isset($_POST['action'])) {
+            // ADD BLOG
+            if ($_POST['action'] == 'add') {
+                if (!isset($_POST['username']) || !isset($_POST['title']) || !isset($_POST['image']) || !isset($_POST['content'])) {
+                    echo json_encode("Wrong nlog");
+                    return;
+                }
 
-        $query = "UPDATE blogs SET(`id`='$blogID', `author`='$author', `title`=' $title', `image`='$image', `content`='$content') WHERE `id`='$blogID'";
+                $username = $_POST['username'];
+                $title = $_POST['title'];
+                $image = $_POST['image'];
+                $content = $_POST['content'];
 
-        $result = mysqli_query($conn, $query);
-        if ($result) {
-            $response = "Sửa thành công";
-        } else {
-            $response = "Lỗi: " . $conn->error;
+                $query = "INSERT INTO contacts(username, title, image, content) VALUES('$username','$title','$image','$content')";
+                $result = mysqli_query($conn, $query);
+                if ($result) {
+                    echo json_encode(array("status" => 200));
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
+
+                mysqli_close($conn);
+            }
+            // EDIT BLOG
+            if ($_POST['action'] == 'edit') {
+                if (!isset($_POST['username']) || !isset($_POST['title']) || !isset($_POST['image']) || !isset($_POST['content'])) {
+                    echo json_encode("Wrong blog");
+                    return;
+                }
+
+                $username = $_POST['username'];
+                $title = $_POST['title'];
+                $image = $_POST['image'];
+                $content = $_POST['content'];
+
+                $query = "UPDATE blogs SET title='$title', image='$image', content='$content' WHERE username='$username'";
+                $result = mysqli_query($conn, $query);
+                if ($result) {
+                    echo json_encode(array("status" => 200));
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
+                mysqli_close($conn);
+            }
+            // DELETE BLOG
+            if ($_POST['action'] == 'delete') {
+                $id = $_POST['id'];
+                $sql = "DELETE FROM `blogs` WHERE id=$id";
+                $result = mysqli_query($conn, $sql);
+
+                if ($result) {
+                    echo json_encode(array("status" => 200));
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
+            }
         }
-        mysqli_close($conn);
-    }
-    // DELETE BLOG
-    if ($_GET['action'] == 'delete_blog') {
-        include("../config/db_connect.php");
-        $blogID = $_GET['postID'];
-
-        $query = "UPDATE FROM blogs WHERE `id`='$blogID'";
-        $result = mysqli_query($conn, $query);
-        if ($result) {
-            $response = "Xóa thành công";
-        } else {
-            $response = "Lỗi: " . $conn->error;
-        }
-        mysqli_close($conn);
-    }
+        break;
 }
