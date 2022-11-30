@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Read Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <!-- ADD USER MODAL -->
+    <div class="modal fade" id="userAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New User</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form id="addNewUser" method="POST">
+            <div class="modal-body">
+              <div id="errorMessage" class="alert alert-warning d-none"></div>
+
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="newusername" name="username" />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="newpassword" name="password" />
+              </div>
+              <div class="mb-3">
+                <label for="confirmPw" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPw" name="confirmPw" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary add-btn">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- EDIT USER MODAL -->
+    <div class="modal fade" id="userEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form id="updateUser" method="POST">
+            <div class="modal-body">
+              <div id="errorMessageUpdate" class="alert alert-warning d-none"></div>
+
+              <input type="hidden" name="student_id" id="student_id" />
+
+              <div class="mb-3">
+                <label for="fullname" class="form-label">Fullname</label>
+                <input type="text" class="form-control" id="fullname" name="fullname" />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" />
+              </div>
+              <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="text" class="form-control" id="image" name="image" />
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone" />
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary save-btn">Update User</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- CONTAINER -->
+    <div class="container">
+      <div class="header">
+        <h1 class="title">GET ALL USERS</h1>
+      </div>
+      <div class="content">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userAddModal">Create New User</button>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>UserName</th>
+              <th>Password</th>
+              <th>Fullname</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="user-list"></tbody>
+        </table>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // GET ALL USER
+      $(document).ready(
+        $.ajax({
+          url: "../services/users/crud_user.php",
+          method: "GET",
+          data: {
+            action: "get_all",
+          },
+          success: function (result) {
+            var dataResult = JSON.parse(result);
+            console.log(dataResult);
+            var userList = $(".user-list");
+            var userItem = "";
+            for (let i = 0; i < dataResult.length; i++) {
+              userItem +=
+                "<tr>" +
+                "<td>" +
+                dataResult[i][0] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][1] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][2] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][3] +
+                "</td>" +
+                "<td>" +
+                dataResult[i][7] +
+                "</td>" +
+                "<td>" +
+                "<button class='edit-btn' data-bs-toggle='modal' data-bs-target='#userEditModal' value=" +
+                dataResult[i][0] +
+                ">" +
+                "Edit" +
+                "</button>" +
+                "<button class='delete-btn' value=" +
+                dataResult[i][0] +
+                ">" +
+                "Xóa" +
+                "</button>" +
+                "</td>" +
+                "</tr>";
+            }
+            userList.append(userItem);
+          },
+        })
+      );
+      // HANDLE CREATE NEW ADMIN
+      $(document).on("click", ".add-btn", function (e) {
+        var username = $("#newusername").val();
+        var password = $("#newpassword").val();
+        var confirmPw = $("#confirmPw").val();
+        $.ajax({
+          url: "../services/users/crud_user.php",
+          method: "POST",
+          data: {
+            action: "add_admin",
+            username: username,
+            password: password,
+            confirmPw: confirmPw,
+          },
+          success: function (result) {
+            var dataResult = JSON.parse(result);
+            if (dataResult["status"] == "200") {
+              $("#userAddModal").modal("hide");
+            }
+          },
+        });
+      });
+      // HANDLE UPDATE USER | ADMIN
+      var editId;
+      $(document).on("click", ".edit-btn", function (e) {
+        editId = $(e.target).val();
+      });
+      $(document).on("click", ".save-btn", function (e) {
+        var id = editId;
+        var fullname = $("#fullname").val();
+        var password = $("#password").val();
+        var image = $("#image").val();
+        var phone = $("#phone").val();
+        var address = $("#address").val();
+        $.ajax({
+          url: "../services/users/crud_user.php",
+          method: "POST",
+          data: {
+            action: "edit_info",
+            id: id,
+            password: password,
+            fullname: fullname,
+            image: image,
+            phone: phone,
+            address: address,
+          },
+          success: function (result) {
+            var dataResult = JSON.parse(result);
+            if (dataResult["status"] == "200") {
+              location.reload();
+            }
+          },
+        });
+      });
+      // HANDLE DELETE USER | ADMIN
+      $(document).on("click", ".delete-btn", function (e) {
+        var id = $(e.target).val();
+        $.ajax({
+          url: "../services/users/crud_user.php",
+          method: "POST",
+          data: {
+            action: "delete",
+            id: id,
+          },
+          success: function (result) {
+            var dataResult = JSON.parse(result);
+            if (dataResult["status"] == "200") {
+              location.reload();
+            }
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
