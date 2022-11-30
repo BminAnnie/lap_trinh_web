@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2022 at 12:23 PM
+-- Generation Time: Nov 30, 2022 at 04:17 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `gender` varchar(100) NOT NULL,
+  `price` double NOT NULL,
+  `birthday` varchar(255) NOT NULL,
+  `issell` tinyint(1) NOT NULL,
+  `microchip` varchar(255) NOT NULL,
+  `informationMore` varchar(255) NOT NULL,
+  `isVaccinated` tinyint(1) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `gender`, `price`, `birthday`, `issell`, `microchip`, `informationMore`, `isVaccinated`, `quantity`) VALUES
+(1, 'dog1', 'boy5', 122, '12/3/1889', 1, 'mc5', 'nonono', 1, 121),
+(2, 'dog2', 'boy2', 728121, '12/4/2020', 0, 'mc2', 'more2', 1, 2),
+(3, 'dog3', 'girl1', 6456, '7/8/2022', 0, 'mc3', 'more3', 1, 3),
+(4, 'dog4', 'girl4', 6734423, '6/3/2020', 0, 'mc4', 'more4', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -55,6 +84,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `fullname`, `image`, `phone`,
 --
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -63,6 +98,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
