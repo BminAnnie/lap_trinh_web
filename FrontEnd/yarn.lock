@@ -523,9 +523,9 @@
   dependencies:
     "glob" "7.1.7"
 
-"@next/swc-win32-ia32-msvc@13.0.0":
-  "integrity" "sha512-zNaxaO+Kl/xNz02E9QlcVz0pT4MjkXGDLb25qxtAzyJL15aU0+VjjbIZAYWctG59dvggNIUNDWgoBeVTKB9xLg=="
-  "resolved" "https://registry.npmjs.org/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-13.0.0.tgz"
+"@next/swc-win32-x64-msvc@13.0.0":
+  "integrity" "sha512-FFOGGWwTCRMu9W7MF496Urefxtuo2lttxF1vwS+1rIRsKvuLrWhVaVTj3T8sf2EBL6gtJbmh4TYlizS+obnGKA=="
+  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.0.0.tgz"
   "version" "13.0.0"
 
 "@nodelib/fs.scandir@2.1.5":
