@@ -16,7 +16,9 @@ const UserProvider = ({ children }) => {
         getUserId();
     }, []);
     useEffect(() => {
-        const cart = JSON.parse(localStorage.getItem(`${userId}cart`)) || [];
+        if (localStorage.getItem(`${userId}cart`)) {
+            const cart = JSON.parse(localStorage.getItem(`${userId}cart`));
+        }
         setCart(cart);
     }, [userId]);
     return (
