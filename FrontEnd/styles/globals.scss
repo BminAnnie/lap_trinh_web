@@ -2,21 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'SVNBold';
-  src: url('../public/fonts/SVNGilroy_Bold.otf');
-}
-@font-face {
-  font-family: 'SVNLight';
-  src: url('../public/fonts/SVNGilroy_Light.otf');
-}
 @layer base {
   :root {
     --blue: #1e90ff;
     --white: #ffffff;
   }
   body {
-    font-family: 'SVNBold';
+    font-family: 'Roboto', sans-serif;
     @apply m-0 p-0 overflow-x-hidden;
   }
   body::-webkit-scrollbar {
@@ -29,28 +21,28 @@
 
 @layer utilities {
   .text-16-24-700 {
-    @apply text-[16px] font-bold leading-6 font-['SVNBold'];
+    @apply text-[16px] font-bold leading-6 ;
   }
   .text-16-24-500 {
-    @apply text-[16px] font-medium leading-6 font-['SVNLight'];
+    @apply text-[16px] font-medium leading-6 ;
   }
   .text-14-20-500 {
-    @apply text-[14px] leading-5 font-medium font-['SVNLight']; 
+    @apply text-[14px] leading-5 font-medium ; 
   }
   .text-14-20-700 {
-    @apply text-[14px] leading-5 font-bold font-['SVNBold'];
+    @apply text-[14px] leading-5 font-bold ;
   }
   .text-12-18-500 {
-    @apply text-[12px] leading-[18px] font-medium font-['SVNLight'];
+    @apply text-[12px] leading-[18px] font-medium ;
   }
   .text-12-18-700 {
-    @apply text-[12px] leading-[18px] font-bold font-['SVNBold'];
+    @apply text-[12px] leading-[18px] font-bold ;
   }
   .text-24-36-700 {
-    @apply text-[24px] leading-[36px] font-bold font-['SVNBold'];
+    @apply text-[24px] leading-[36px] font-bold ;
   }
   .text-24-36-500 {
-    @apply text-[24px] leading-[36px] font-medium font-['SVNLight'];
+    @apply text-[24px] leading-[36px] font-medium ;
   }
   .centreFlex {
     @apply flex items-center justify-center;
@@ -110,11 +102,11 @@
 .image-gallery-thumbnails-container .image-gallery-thumbnail.active,
 .image-gallery-thumbnail:focus,
 .image-gallery-thumbnail:hover {
-  @apply border-2 tablet:border-[3px] border-[#F1D092]  rounded-md;
+  @apply border-[4px] border-[#F1D092]  rounded-[10px];
 }
 .image-gallery-thumbnails-container .image-gallery-thumbnail:hover {
   outline: none;
-  border: 2px solid #f1d092;
+  border: 4px solid #f1d092;
 }
 .image-gallery-slide-wrapper {
   .image-gallery-left-nav .image-gallery-svg,

@@ -17,7 +17,7 @@ module.exports = {
       // => @media (min-width: 1280px) { ... }
     },
   },
-  plugins: [require('tw-elements/dist/plugin'), require('flowbite/plugin'),require("daisyui")],
+  plugins: [require("daisyui")],
 
   daisyui: {
     styled: true,
