@@ -1,6 +1,10 @@
 import axios from 'axios';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import dogAPIs from '../../api/dogs/dogAPIs';
+import notify from '../../helpers/notify';
+import PetAdd from '../Pet/PetAdd';
+import PetInfo from '../Pet/PetInfo';
 
 const finds = [{ type: 'nameDog', name: 'Tên chó' }];
 
@@ -10,8 +14,8 @@ const DogsTable = ({ params }) => {
     const [valueSearch, setValueSearch] = useState('');
     useEffect(() => {
         const getAllDogs = async () => {
-            const res = await axios.get('http://localhost:8080/dogs', { params: { page: 1 } });
-            setDogs(res.data);
+            const dogs = await dogAPIs.getDogs({ page: 1 });
+            setDogs(dogs);
         };
         getAllDogs();
     }, []);
@@ -22,11 +26,21 @@ const DogsTable = ({ params }) => {
         if (typeSearch !== '') params[typeSearch] = valueSearch;
         if (isNaN(params.min) || params.min.trim() === '') params.min = '0';
         if (isNaN(params.max) || params.max.trim() == '') params.max = '1000000';
-        console.log(params);
-        const res = await axios.get('http://localhost:8080/dogs/search', {
-            params,
-        });
-        setDogs(res.data);
+
+        const dogs = await dogAPIs.searchDogs(params);
+        setDogs(dogs);
+    };
+    const deleteDog1 = (id) => {
+        return async (e) => {
+            e.preventDefault();
+            const res = await dogAPIs.deleteDog(id);
+            console.log(res.status);
+            if (res.status == 200) {
+                const newDogs = dogs.filter((dog) => dog.id != id);
+                setDogs(newDogs);
+                notify('Delete success');
+            } else notify('Fail to delete dog: ' + id, 'error');
+        };
     };
     const handleKeypress = (e) => {
         if (e.keyCode === 13) {
@@ -36,7 +50,28 @@ const DogsTable = ({ params }) => {
     return (
         <div className="w-full">
             <div className="flex justify-between items-center  px-[40px]">
-                <div className="btn btn-warning btn-wide">Tất cả chú chó</div>
+                <div className="flex">
+                    <div className="btn btn-warning btn-wide">Tất cả chú chó</div>
+
+                    <label htmlFor="my-modal-10">
+                        <div className="btn btn-accent btn-outline ml-3">Thêm</div>
+                    </label>
+
+                    <input type="checkbox" id="my-modal-10" className="modal-toggle" />
+                    <label htmlFor="my-modal-10" className="modal cursor-pointer">
+                        <label className="modal-box relative p-0" htmlFor="">
+                            <label
+                                htmlFor="my-modal-10"
+                                className="btn btn-sm btn-circle absolute right-2 top-2"
+                            >
+                                ✕
+                            </label>
+                            <div className="py-7 px-4">
+                                <PetAdd />
+                            </div>
+                        </label>
+                    </label>
+                </div>
                 <div className="flex">
                     <select
                         className="select select-bordered  max-w-xs mr-[10px]"
@@ -95,6 +130,7 @@ const DogsTable = ({ params }) => {
                             <th>Giá</th>
                             <th>Đã được bán</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -126,11 +162,19 @@ const DogsTable = ({ params }) => {
                                     <td>{dog.price}$</td>
                                     <td>{dog.isSell ? 'Rồi' : 'Chưa'}</td>
                                     <th>
-                                        <Link href={{ pathname: `/user/${dog.id}` }}>
+                                        <Link href={{ pathname: `/petDetail/${dog.id}` }}>
                                             <button className="btn btn-info btn-sm">
                                                 Chi tiết
                                             </button>
                                         </Link>
+                                    </th>
+                                    <th>
+                                        <button
+                                            className="btn btn-error btn-sm"
+                                            onClick={deleteDog1(dog?.id)}
+                                        >
+                                            Xóa
+                                        </button>
                                     </th>
                                 </tr>
                             );

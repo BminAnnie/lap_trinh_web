@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import Header from '../components/Header';
 import Path from '../components/Path';
 import OneMoreFriend from '../components/SubBanner/OneMoreFriend';;
 import { PetCard } from '../components/BuyPet/PetCard';
-import { loadDogs } from '../Helper/access';
 import Pagination from '@mui/material/Pagination';
 import DogsFilter from '../components/Filter/DogsFilter';
 import axios from 'axios';
@@ -83,17 +81,5 @@ const Category = () => {
     );
 };
 
-export async function getStaticProps() {
-    // Call an external API endpoint to get posts.
-    // You can use any data fetching library
-    const data = await loadDogs({
-        page: 1,
-    });
-    return {
-        props: {
-            data,
-        },
-    };
-}
 
 export default Category;

@@ -3,7 +3,14 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     images: {
-        domains: ['media.istockphoto.com', 'cdn.cnn.com'],
+        domains: [
+            'media.istockphoto.com',
+            'cdn.cnn.com',
+            'hips.hearstapps.com',
+            'cdn.akc.org',
+            'img.freepik.com',
+            'cdn.pixabay.com',
+        ],
     },
 };
 

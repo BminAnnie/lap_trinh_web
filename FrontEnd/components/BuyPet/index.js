@@ -5,15 +5,15 @@ import ButtonWrapper from '../ButtonWrapper';
 import SpaceContent from '../SpaceContent';
 import { PetCard } from './PetCard';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
+import dogAPIs from '../../Api/dogs/dogApis';
 const BuyPet = () => {
     const [dogs, setDogs] = useState([]);
     const { t, i18n } = useTranslation();
     const router = useRouter();
     useEffect(() => {
         const getAllDogs = async () => {
-            const res = await axios.get('http://localhost:8080/dogs', { params: { page: 1 } });
-            setDogs(res.data);
+            const dogs = await dogAPIs.getDogs({ page: 1 });
+            setDogs(dogs);
         };
         getAllDogs();
     }, []);

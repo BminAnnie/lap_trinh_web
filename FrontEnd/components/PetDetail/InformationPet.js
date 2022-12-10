@@ -1,26 +1,15 @@
 import React, { useContext } from 'react';
 import Path from '../Path';
-import { TbMessageDots } from 'react-icons/tb';
 import ButtonWrapper from '../ButtonWrapper';
 import { UserContext } from '../Auth/UserProvider';
-import { toast } from 'react-toastify';
+import notify from '../../helpers/notify';
+
 const mapBreed = { small: 'Nhỏ', medium: 'Trung bình', large: 'Lớn' };
 const InformationPet = ({ dog = {} }) => {
     const { userId, cart, setCart } = useContext(UserContext);
-    const notify = (content = 'Pls login to add your cart') =>
-        toast.error(content, {
-            position: 'top-center',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'colored',
-        });
     const handleAddCart = () => {
         if (!userId) {
-            notify('You must login to add your cart');
+            notify('You must login to add your cart', 'error');
             return;
         }
         console.log(cart, userId);

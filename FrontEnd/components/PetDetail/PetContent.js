@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import ImagesPet from './ImagesPet';
 import InformationPet from './InformationPet';
-import { Gallery, Item } from 'react-photoswipe-gallery';
-import { loadDogs } from '../../Helper/access';
 import 'photoswipe/dist/photoswipe.css';
 import SpaceContent from '../SpaceContent';
 import { PetCard } from '../BuyPet/PetCard';

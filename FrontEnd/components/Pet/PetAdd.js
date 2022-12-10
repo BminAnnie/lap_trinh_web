@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const PetInfo = ({ dog = {} }) => {
+const PetAdd = ({}) => {
     const [dogFake, setDogFake] = useState({});
-    console.log(dogFake);
-    useEffect(() => {
-        setDogFake({ ...dog });
-    }, [dog]);
     const handleInput = (e) => {
         setDogFake((pre) => ({ ...pre, [e.target.name]: e.target.value }));
     };
@@ -192,7 +188,7 @@ const PetInfo = ({ dog = {} }) => {
                 </div>
                 <div className="flex justify-end m-4">
                     <button className="btn btn-info btn-sm" onClick={submitForm}>
-                        Lưu
+                        Thêm
                     </button>
                 </div>
             </div>
@@ -200,4 +196,4 @@ const PetInfo = ({ dog = {} }) => {
     );
 };
 
-export default PetInfo;
+export default PetAdd;
