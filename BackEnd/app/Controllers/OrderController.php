@@ -37,6 +37,20 @@ class  OrderController
         echo json_encode($var);
     }
 
+    public  function getOrder()
+    {
+        global $conn;
+        // if (!isset($_SESSION['id']) | ((string)$_GET['idOwner'] != $_SESSION['id']))
+        //     throw new RouterNotFoundException();
+        $sql = $this->select . " WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $_GET['id']);
+        $stmt->execute();
+        $orders = $stmt->fetch();
+        echo json_encode($orders);
+    }
+
+
     public  function getOrders()
     {
         global $conn;

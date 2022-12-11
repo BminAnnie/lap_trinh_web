@@ -12,18 +12,19 @@ function configRoutes($router)
         ->post('/user/login', [App\Controllers\UserController::class, 'login'])
         ->get('/user/logout', [App\Controllers\UserController::class, 'logout'])
         ->post('/user/register', [App\Controllers\UserController::class, 'register'])
+        ->get('/dogs/order', [App\Controllers\DogController::class, 'getDogs'])
         ->get('/user/checkAccess', [App\Controllers\UserController::class, 'checkAccess']);
     //* Router for host and admin
     if (!isset($_SESSION['id']) || !$_SESSION['id']) {
         return;
     }
     $router
-        ->get('/dogs/order', [App\Controllers\DogController::class, 'getDogs'])
         ->get('/users/search', [App\Controllers\UserController::class, 'searchUser'])
         ->get('/user', [App\Controllers\UserController::class, 'getUser'])
         ->post('/user/edit', [App\Controllers\UserController::class, 'updateUser'])
         ->post('/user/upload', [App\Controllers\UserController::class, 'upload'])
         ->get('/orders/user', [App\Controllers\OrderController::class, 'getOrders'])
+        ->get('/order', [App\Controllers\OrderController::class, 'getOrder'])
         ->post('/order/sentOrder', [App\Controllers\OrderController::class, 'sentOrder']);
 
     //* Router for admin

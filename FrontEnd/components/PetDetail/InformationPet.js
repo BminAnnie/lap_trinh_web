@@ -30,7 +30,7 @@ const InformationPet = ({ dog = {} }) => {
             <div className="text-24-36-700">{dog?.name}</div>
             <div className="text-[20px] leading-8 font-bold">{dog?.price} $</div>
             <div className="flex mt-[18px]">
-                <ButtonWrapper className="bg-[#003459] " onClick={handleAddCart}>
+                <ButtonWrapper className="bg-[#003459] cursor-pointer hover:opacity-80" onClick={handleAddCart}>
                     <p className="text-16-24-700 text-[#FDFDFD]">Add to cart</p>
                 </ButtonWrapper>
             </div>
