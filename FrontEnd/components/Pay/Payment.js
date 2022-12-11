@@ -21,11 +21,16 @@ const Payment = () => {
             progress: undefined,
             theme: 'colored',
         });
+    console.log(userId, cart);
     const [params, setParams] = useState({});
     const numberDogs = cart.length;
     const totalValue = cart.reduce((totalValue, item) => (totalValue += parseInt(item.price)), 0);
     const handleSubmit = async () => {
         if (!userId || cart.length <= 0) return;
+        if (!params.methodPayment || !params.phone || params.address) {
+            notify('Please fill all the fields!', 'error');
+            return;
+        }
         const newParams = { ...params, numberDogs, totalValue, dogs: cart, idOwner: userId };
         axios.defaults.withCredentials = true;
         const res = await axios.post('http://localhost:8080/order/sentOrder', newParams);

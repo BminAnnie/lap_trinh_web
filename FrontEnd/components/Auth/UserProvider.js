@@ -18,8 +18,8 @@ const UserProvider = ({ children }) => {
     useEffect(() => {
         if (localStorage.getItem(`${userId}cart`)) {
             const cart = JSON.parse(localStorage.getItem(`${userId}cart`));
+            setCart(cart);
         }
-        setCart(cart);
     }, [userId]);
     return (
         <UserContext.Provider value={{ userId, cart, setCart }}>{children}</UserContext.Provider>
