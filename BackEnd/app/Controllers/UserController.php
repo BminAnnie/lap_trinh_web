@@ -175,15 +175,17 @@ class  UserController
     {
         global $conn;
         $file = $_FILES['file'];
-        $filepath = STORAGE_PATH . $file['name'];
-        move_uploaded_file($file['tmp_name'], $filepath);
         $id = $_POST['id'];
-        $pathImage = '/avatar' . $file['name'];
-        $sql = "UPDATE users SET avatar = $pathImage WHERE id = $id";
+        $name = $file['name'];
+        $pathImage = "/avatar/$name";
+        $sql = "UPDATE users SET avatar = '$pathImage' WHERE id = $id";
         $stmt = $conn->prepare($sql);
         try {
             $stmt->execute();
+            $filepath = STORAGE_PATH . $file['name'];
+            move_uploaded_file($file['tmp_name'], $filepath);
             $response = ['status' => 200, 'message' => 'Succesful'];
+            echo json_encode($response);
         } catch (Exception $e) {
             $response = ['status' => 402, 'message' => 'Failed to upload image'];
             echo json_encode($response);

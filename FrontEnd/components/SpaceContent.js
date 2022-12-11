@@ -16,7 +16,7 @@ const SpaceContent = ({
         <p className="mt-[2px] font-bold leading-8 text-[24px] text-[#003459]">{contentDown}</p>
       </div>
       {!isHideButton && (
-        <ButtonWrapper className="border-[2px]  border-[#003459] absolute right-0 bottom-7 hidden tablet:block">
+        <ButtonWrapper className="border-[2px]  border-[#003459] absolute right-0 bottom-7 hidden tablet:block hover:opacity-80 cursor-pointer hover:bg-orange-200">
           <div className="flex items-center" onClick={handleOnclick}>
             <p className="text-14-20-500">{t('Button.3')}</p>
             <MdNavigateNext className="ml-4" />

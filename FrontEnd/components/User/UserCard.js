@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Link from 'next/link';
 import React from 'react';
-
+import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong';
 const UserCard = ({ user }) => {
     const handleChangeAvatar = (e) => {
         const formData = new FormData();
@@ -10,20 +10,22 @@ const UserCard = ({ user }) => {
         axios.defaults.withCredentials = true;
         const res = axios.post('http://localhost:8080/user/upload', formData);
         e.target.value = null;
+        window.location.reload(false);
     };
     return (
-        <div className="mb-2 md:mb-0 w-[300px] mr-[100px]">
+        <div className="mb-2 md:mb-0 w-[300px] laptop:mr-[100px]">
             <div className="rounded-lg shadow-lg h-full block bg-white">
                 <div className="flex justify-center">
-                    <div className="flex justify-center -mt-[75px]">
+                    <div className="avavarUser flex justify-center -mt-[75px] relative hover:opacity-50 ">
                         <label htmlFor="change_avatar">
                             <img
-                                src={
-                                    'C:\\Users\\Bao Nguyen\\Documents\\PHP\\storage\\avatarUser1.png'
-                                }
-                                className="rounded-full mx-auto shadow-lg w-[150px]"
+                                src={user?.avatar}
+                                className="rounded-full mx-auto shadow-lg w-[150px] h-[150px]"
                                 alt=""
                             />
+                            <div className="camera absolute top-0 left-0 w-[150px] h-[150px]  hidden bg-slate-200 rounded-full opacity-50">
+                                <CenterFocusStrongIcon />
+                            </div>
                         </label>
                     </div>
                 </div>

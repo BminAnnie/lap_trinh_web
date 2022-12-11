@@ -22,7 +22,7 @@ const detailuser = () => {
     }, [router]);
     return (
         <div className="mt-[150px]">
-            <div className="flex justify-center">
+            <div className="flex flex-col items-center laptop:flex-row laptop:justify-center">
                 <UserCard user={user} />
                 <UserForm user={user} />
             </div>

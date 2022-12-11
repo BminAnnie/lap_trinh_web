@@ -12,7 +12,7 @@ const BuyPet = () => {
     const router = useRouter();
     useEffect(() => {
         const getAllDogs = async () => {
-            const dogs = await dogAPIs.getDogs({ page: 1 });
+            const dogs = await dogAPIs.searchDogs({ page: 1 });
             setDogs(dogs);
         };
         getAllDogs();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import notify from '../../helpers/notify';
 const PetInfo = ({ dog = {} }) => {
     const [dogFake, setDogFake] = useState({});
     console.log(dogFake);
@@ -15,8 +15,7 @@ const PetInfo = ({ dog = {} }) => {
         if (!dogFake) return;
         axios.defaults.withCredentials = true;
         const res = await axios.post('http://localhost:8080/dog/edit', dogFake);
-        // window.location.reload(false);
-        console.log(res.data);
+        window.location.reload(false);
     };
     return (
         <>

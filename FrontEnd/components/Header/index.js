@@ -84,7 +84,7 @@ const Header = () => {
                 </ul>
             </Popover>
             <div className="header__nav flex h-full items-center">
-                <div className="header__name flex flex-col items-center mr-6 w-[115px]">
+                <div className="header__name hidden laptop:flex flex-col items-center laptop:mr-6 w-[115px]">
                     <img src="/images/headerImages/nameShop.png" alt="" className="w-[115px]" />
                     <img src="/images/headerImages/nameHashTag.png" alt="" className="w-[55px]" />
                 </div>
@@ -108,7 +108,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="header_search flex  h-full  items-center">
-                <InputSearch className="laptop:mx-3" />
+                <InputSearch className="laptop:mx-3 hidden laptop:flex" />
 
                 {!userId && (
                     <label htmlFor="my-modal-4" className="">

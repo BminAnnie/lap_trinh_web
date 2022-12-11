@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import notify from '../../helpers/notify';
+import { useRouter } from 'next/router';
 const PetAdd = ({}) => {
+    const router = useRouter();
     const [dogFake, setDogFake] = useState({
         gender: 0,
         isVaccinated: 0,
@@ -18,10 +20,11 @@ const PetAdd = ({}) => {
         axios.defaults.withCredentials = true;
         const res = await axios.post('http://localhost:8080/dog/add', dogFake);
         notify('Bạn đã thêm thành công');
-        setTimeout(() => {
-            window.location.reload(false);
-        }, 300);
-        console.log(res.data);
+        // setTimeout(() => {
+        //     window.location.reload(false);
+        // }, 300);
+        const id = res.data.id;
+        router.push(`/petDetail/${id}`);
     };
     return (
         <>

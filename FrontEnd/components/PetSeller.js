@@ -33,12 +33,6 @@ const PetSeller = () => {
           <img src="/images/brand/image10.png" alt="" />
         </div>
       </div>
-      <ButtonWrapper className="border-[2px]  border-[#003459] w-full flex justify-center mt-[30px] tablet:hidden">
-        <div className="flex items-center" >
-          <p className="text-14-20-500">View all our sellers</p>
-          <MdNavigateNext className="ml-4" />
-        </div>
-      </ButtonWrapper>
     </div>
   );
 };

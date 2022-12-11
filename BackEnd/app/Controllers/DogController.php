@@ -17,7 +17,7 @@ class  DogController
         $page = 1;
         if (isset($_GET['page'])) $page = $_GET['page'];
         $start = ($page - 1) * 10;
-        $sql .= " limit $start,10";
+        $sql .= " limit $start,100";
         $stmt = $conn->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
@@ -103,9 +103,11 @@ class  DogController
             $sql .= ' AND breed = "' . $_GET['breed'] . '"';
         }
         if (isset($_GET['page'])) $page = $_GET['page'];
-
+        $limit = 10;
+        if (isset($_GET['limit']))
+            $limit = $_GET['limit'];
         $start = ($page - 1) * 10;
-        $sql .= " limit $start,10";
+        $sql .= " limit $start, $limit";
         $stmt = $conn->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
@@ -173,13 +175,38 @@ class  DogController
         $stmt->bindParam(':breed', $dog->breed);
         $stmt->bindParam(':color', $dog->color);
 
-        echo json_encode($dog);
         try {
             $stmt->execute();
-            $response = ['status' => 1, 'message' => 'Add dog successfully.'];
+            $sql = "SELECT * FROM dogs WHERE id=(SELECT MAX(id) FROM dogs)";
+            $stmt = $conn->prepare($sql);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute();
+            $dog = $stmt->fetch();
+            echo json_encode($dog);
         } catch (Exception $e) {
             $response = ['status' => 0, 'message' => 'Failed to add dog.'];
+            echo json_encode($response);
         }
-        echo json_encode($response);
+    }
+
+    public function upload()
+    {
+        global $conn;
+        $file = $_FILES['file'];
+        $id = $_POST['id'];
+        $name = $file['name'];
+        $pathImage = "/avatar/$name";
+        $sql = "UPDATE dogs SET avatar = '$pathImage' WHERE id = $id";
+        $stmt = $conn->prepare($sql);
+        try {
+            $stmt->execute();
+            $filepath = STORAGE_PATH . $file['name'];
+            move_uploaded_file($file['tmp_name'], $filepath);
+            $response = ['status' => 200, 'message' => 'Succesful'];
+            echo json_encode($response);
+        } catch (Exception $e) {
+            $response = ['status' => 402, 'message' => 'Failed to upload image'];
+            echo json_encode($response);
+        }
     }
 }

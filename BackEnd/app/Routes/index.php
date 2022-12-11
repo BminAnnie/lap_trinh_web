@@ -30,6 +30,7 @@ function configRoutes($router)
     if (!isset($_SESSION['isAdmin']) || !$_SESSION['isAdmin'])
         return;
     $router
+        ->post('/dog/upload', [App\Controllers\DogController::class, 'upload'])
         ->post('/dogs/delete', [App\Controllers\DogController::class, 'deleteDog'])
         ->post('/users/delete', [App\Controllers\UserController::class, 'deleteUser'])
         ->get('/users', [App\Controllers\UserController::class, 'getAllUser'])

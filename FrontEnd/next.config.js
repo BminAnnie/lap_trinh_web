@@ -10,6 +10,7 @@ const nextConfig = {
             'cdn.akc.org',
             'img.freepik.com',
             'cdn.pixabay.com',
+            "img.favpng.com"
         ],
     },
 };

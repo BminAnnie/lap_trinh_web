@@ -13,20 +13,13 @@ const DogsTable = ({ params }) => {
     const [typeSearch, setTypeSearch] = useState('');
     const [valueSearch, setValueSearch] = useState('');
     useEffect(() => {
-        const getAllDogs = async () => {
-            const dogs = await dogAPIs.getDogs({ page: 1 });
-            setDogs(dogs);
-        };
-        getAllDogs();
-    }, []);
-    useEffect(() => {
         handleSearch();
     }, [params]);
     const handleSearch = async () => {
         if (typeSearch !== '') params[typeSearch] = valueSearch;
         if (isNaN(params.min) || params.min.trim() === '') params.min = '0';
         if (isNaN(params.max) || params.max.trim() == '') params.max = '1000000';
-
+        params.limit = 100;
         const dogs = await dogAPIs.searchDogs(params);
         setDogs(dogs);
     };

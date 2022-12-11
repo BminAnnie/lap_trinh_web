@@ -27,14 +27,14 @@ const InputSearch = ({ className = '' }) => {
 
     return (
         <div
-            className={`flex items-center h-[44px] laptop:bg-[#FDFDFD] rounded-full relative  min-[1350px]:rounded-[46px] ${className}`}
+            className={`flex items-center h-[44px] laptop:bg-[#FDFDFD] rounded-full relative  laptop:rounded-[46px] ${className}`}
         >
-            <label className="min-[1350px]:ml-1 min-w-[44px] h-full centreFlex">
+            <label className="laptop:ml-1 min-w-[44px] h-full centreFlex">
                 <RiSearchLine className="h-[23px] w-[23px] text-[#00171F] laptop:w-4 laptop:h-4 laptop:text-[#667479]" />
             </label>
             <input
                 placeholder="Search something here!"
-                className="text-14-20-500 w-0 min-[1350px]:w-[217px] transition-all duration-500"
+                className="text-14-20-500 w-0 laptop:w-[217px] transition-all duration-500"
                 onChange={(e) => setNameDog(e.target.value)}
                 value={nameDog}
                 onFocus={() => setHideSearch(false)}

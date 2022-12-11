@@ -27,9 +27,9 @@ const UserForm = ({ user }) => {
         console.log(res.data);
     };
     return (
-        <div className="block p-6 rounded-lg shadow-lg bg-white ml-[70px] min-w-[600px]">
+        <div className="block p-6 rounded-lg shadow-lg bg-white laptop:ml-[70px] min-w-[300px] laptop:min-w-[600px]">
             <form>
-                <div class="grid grid-cols-2 gap-x-10">
+                <div class="grid laptop:grid-cols-2 gap-x-10">
                     <div className="form-group mb-6">
                         <label
                             for="exampleInputEmail2"

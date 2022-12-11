@@ -41,17 +41,6 @@ const OneMoreFriend = ({className=''}) => {
           will always be with you to have fun. We have 200+ different pets that
           can meet your needs!
         </p>
-        <div className="flex">
-          <ButtonWrapper className="border-[2px]  border-[#003459] ">
-            <div className="flex items-center">
-              <p className="text-12-18-700 tablet:text-16-24-700 text-[#003459] mr-[10px]">View Intro</p>
-              <BsPlayCircle className="text-[16px] tablet:text-[21px]" />
-            </div>
-          </ButtonWrapper>
-          <ButtonWrapper className="border-[2px] bg-[#003459] ml-4">
-            <p className="text-12-18-700 tablet:text-16-24-700 text-[#FDFDFD]">Explore Now</p>
-          </ButtonWrapper>
-        </div>
       </div>
       </div>
     </div>
