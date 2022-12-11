@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { useState } from 'react';
-import { toast } from 'react-toastify';
+import notify from '../../helpers/notify';
 import { UserContext } from '../Auth/UserProvider';
 import ConfirmDog from './ConfirmDog';
 import ConfirmOther from './ConfirmOther';
@@ -10,31 +10,19 @@ import ConfirmOther from './ConfirmOther';
 const Payment = () => {
     const router = useRouter();
     const { userId, cart, setCart } = useContext(UserContext);
-    const notify = (content = 'Your order success!') =>
-        toast.info(content, {
-            position: 'top-center',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'colored',
-        });
-    console.log(userId, cart);
     const [params, setParams] = useState({});
     const numberDogs = cart.length;
     const totalValue = cart.reduce((totalValue, item) => (totalValue += parseInt(item.price)), 0);
     const handleSubmit = async () => {
         if (!userId || cart.length <= 0) return;
-        if (!params.methodPayment || !params.phone || params.address) {
+        if (!params.methodPayment || !params.phone || !params.address) {
             notify('Please fill all the fields!', 'error');
             return;
         }
         const newParams = { ...params, numberDogs, totalValue, dogs: cart, idOwner: userId };
         axios.defaults.withCredentials = true;
         const res = await axios.post('http://localhost:8080/order/sentOrder', newParams);
-        notify();
+        notify('Order successfully');
         setTimeout(() => {
             router.push('/');
             localStorage.setItem(`${userId}cart`, '');
