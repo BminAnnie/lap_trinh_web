@@ -1,6 +1,8 @@
 import axios from 'axios';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import userApis from '../../api/users/userAPIs';
+import notify from '../../helpers/notify';
 
 const finds = [
     { type: 'nameUser', name: 'Tên người dùng' },
@@ -27,6 +29,18 @@ const UsersTable = () => {
             withCredentials: true,
         });
         setUsers(res.data);
+    };
+    const deleteUser = (id) => {
+        return async (e) => {
+            e.preventDefault();
+            const res = await userApis.deleteUser(id);
+            console.log(res.status);
+            if (res.status == 200) {
+                const newUsers = users.filter((dog) => dog.id != id);
+                setUsers(newUsers);
+                notify('Delete success');
+            } else notify('Fail to delete dog: ' + id, 'error');
+        };
     };
     const handleKeypress = (e) => {
         if (e.keyCode === 13) {
@@ -129,7 +143,12 @@ const UsersTable = () => {
                                         </Link>
                                     </th>
                                     <th>
-                                        <button className="btn btn-error btn-sm">Xóa</button>
+                                        <button
+                                            className="btn btn-error btn-sm"
+                                            onClick={deleteUser(user.id)}
+                                        >
+                                            Xóa
+                                        </button>
                                     </th>
                                 </tr>
                             );
