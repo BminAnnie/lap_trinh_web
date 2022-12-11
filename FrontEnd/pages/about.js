@@ -6,12 +6,13 @@ const about = () => {
             <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 laptop:h-[32rem] laptop:py-16 laptop:flex-row laptop:items-center">
                 <div className="w-full laptop:w-1/2">
                     <div className="laptop:max-w-laptop">
-                        <h1 className="text-3xl font-semibold tracking-wide dark:text-black laptop:text-4xl">
-                            Find your premium new glasses exported from US
+                        <h1 className="text-3xl font-semibold tracking-wide text-gray-700 laptop:text-4xl">
+                            Petshop là thương hiệu thuộc lĩnh vực nhân giống, kinh doanh thú cưng và
+                            các loại phụ kiện vật nuôi của Công ty Cổ phần DogShop Việt Nam.
                         </h1>
-                        <p className="mt-4 text-gray-600 dark:text-gray-300">
-                            We work with the best remunated glasses dealers in US to find your new
-                            glasses.
+                        <p className="mt-4 text-gray-600">
+                            Petshop cam kết luôn đặt sức khỏe và cuộc sống của các bé chó mèo lên
+                            trên hết trong toàn bộ hoạt động của thương hiệu.
                         </p>
                         <div className="grid gap-6 mt-4 laptop:grid-cols-2">
                             <div className="flex items-center -px-3 dark:text-black">
@@ -30,7 +31,7 @@ const about = () => {
                                     />
                                 </svg>
 
-                                <span className="mx-3">Premium selection</span>
+                                <span className="mx-3">Sự chọn lọc kĩ càng</span>
                             </div>
 
                             <div className="flex items-center -px-3 dark:text-black">
@@ -49,7 +50,7 @@ const about = () => {
                                     />
                                 </svg>
 
-                                <span className="mx-3">Insurance</span>
+                                <span className="mx-3">Sức khỏe dẻo dai</span>
                             </div>
 
                             <div className="flex items-center -px-3 dark:text-black">
@@ -68,7 +69,7 @@ const about = () => {
                                     />
                                 </svg>
 
-                                <span className="mx-3">All legal documents</span>
+                                <span className="mx-3">Giấy tờ hợp pháp</span>
                             </div>
 
                             <div className="flex items-center -px-3 dark:text-black">
@@ -87,7 +88,7 @@ const about = () => {
                                     />
                                 </svg>
 
-                                <span className="mx-3">From US glasses dealers</span>
+                                <span className="mx-3">Thân thiện với chủ</span>
                             </div>
 
                             <div className="flex items-center -px-3 dark:text-black">
@@ -106,7 +107,7 @@ const about = () => {
                                     />
                                 </svg>
 
-                                <span className="mx-3">Payment Security</span>
+                                <span className="mx-3">Thanh toán nhanh gọn</span>
                             </div>
 
                             <div className="flex items-center -px-3 dark:text-black">
@@ -125,7 +126,7 @@ const about = () => {
                                     />
                                 </svg>
 
-                                <span className="mx-3">Fast shipping (+ Express)</span>
+                                <span className="mx-3">Tiêm chích thường xuyên</span>
                             </div>
                         </div>
                     </div>

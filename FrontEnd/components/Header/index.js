@@ -79,15 +79,37 @@ const Header = () => {
                     >
                         <li className="px-2 py-2">{t('NavBar.2')}</li>
                     </Link>
-                    <li className="px-2 py-2">{t('NavBar.3')}</li>
-                    <li className="px-2 py-2">{t('NavBar.4')}</li>
+                    <Link
+                        href={{
+                            pathname: '/about',
+                        }}
+                    >
+                        <li className="px-2 py-2">{t('NavBar.3')}</li>
+                    </Link>
+                    <Link
+                        href={{
+                            pathname: '/contact',
+                        }}
+                    >
+                        <li className="px-2 py-2">{t('NavBar.4')}</li>
+                    </Link>
                 </ul>
             </Popover>
             <div className="header__nav flex h-full items-center">
-                <div className="header__name hidden laptop:flex flex-col items-center laptop:mr-6 w-[115px]">
-                    <img src="/images/headerImages/nameShop.png" alt="" className="w-[115px]" />
-                    <img src="/images/headerImages/nameHashTag.png" alt="" className="w-[55px]" />
-                </div>
+                <Link
+                    href={{
+                        pathname: '/',
+                    }}
+                >
+                    <div className="header__name hidden laptop:flex flex-col items-center laptop:mr-6 w-[115px]">
+                        <img src="/images/headerImages/nameShop.png" alt="" className="w-[115px]" />
+                        <img
+                            src="/images/headerImages/nameHashTag.png"
+                            alt=""
+                            className="w-[55px]"
+                        />
+                    </div>
+                </Link>
                 <ul className=" text-16-24-700 text-[#003459] hidden laptop:flex ">
                     <Link
                         href={{
@@ -103,8 +125,20 @@ const Header = () => {
                     >
                         <li>{t('NavBar.2')}</li>
                     </Link>
-                    <li>{t('NavBar.3')}</li>
-                    <li>{t('NavBar.4')}</li>
+                    <Link
+                        href={{
+                            pathname: '/about',
+                        }}
+                    >
+                        <li>{t('NavBar.3')}</li>
+                    </Link>
+                    <Link
+                        href={{
+                            pathname: '/contact',
+                        }}
+                    >
+                        <li>{t('NavBar.4')}</li>
+                    </Link>
                 </ul>
             </div>
             <div className="header_search flex  h-full  items-center">

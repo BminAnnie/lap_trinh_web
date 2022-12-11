@@ -1,8 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../Auth/UserProvider';
 
 const UserForm = ({ user }) => {
     const [userFake, setUserFake] = useState({});
+    const { userId } = useContext(UserContext);
     useEffect(() => {
         setUserFake({ ...user });
         console.log(user);
@@ -156,9 +158,11 @@ const UserForm = ({ user }) => {
                 <button className="btn btn-info btn-sm" onClick={submitForm}>
                     Thay đổi
                 </button>
-                <a href="/" onClick={handleLogout}>
-                    <button className="btn btn-sm ml-[10px]">Log out</button>
-                </a>
+                {userId == user.id && (
+                    <a href="/" onClick={handleLogout}>
+                        <button className="btn btn-sm ml-[10px]">Log out</button>
+                    </a>
+                )}
             </div>
         </div>
     );

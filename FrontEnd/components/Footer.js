@@ -2,24 +2,8 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className="w-full pt-[80px] mt-[60px] relative">
+    <div className="w-full pt-[50px] mt-[60px] relative">
       <div className="backgroundFooter w-[100vw] -ml-4 laptop:-ml-[60px] desktop:-ml-[130px] h-full colorBanner absolute -z-10 top-0"></div>
-      <div className="w-full  bg-[#003459] p-4 laptop:p-8 rounded-[16px]">
-        <div className="grid laptop:grid-cols-3 h-full gap-x-5">
-          <div className=" text-[#FDFDFD] leading-8 capitalize text-[24px] pb-4 laptop:pb-0">
-            Register now so you don't miss our programs
-          </div>
-          <div className="laptop:col-span-2 bg-[#FFFFFF] rounded-[14px] p-3 flex flex-col laptop:flex-row">
-            <div className="rounded-[8px] mb-3 laptop:mb-0 laptop:mr-3 flex-1 h-[48px] border-[1px] border-[#99A2A5] py-[14px] px-[28px]">
-              <input className="w-full" placeholder="Enter your Email" />
-            </div>
-            <div className="rounded-[8px] h-[48px] laptop:w-[164px] centreFlex bg-[#003459] text-16-24-500 text-[#FDFDFD]">
-              Subcribe Now
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className=" py-[40px] flex flex-col laptop:flex-row justify-between">
         <div className="justify-between tablet:gap-[40px] flex text-16-24-500 text-[#00171F] tablet:justify-center  mb-5 laptop:mb-0">
           <div className="">Home</div>
